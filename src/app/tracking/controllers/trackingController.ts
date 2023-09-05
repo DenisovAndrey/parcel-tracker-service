@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import {TrackingPaths} from "./paths";
+import {getTrackings} from "../actions/trackingsAction";
 
 const router = Router()
 

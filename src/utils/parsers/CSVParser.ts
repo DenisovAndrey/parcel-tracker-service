@@ -3,7 +3,7 @@ import csvParser from 'csv-parser';
 
 export const parseCSV = (filePath: string): Promise<Object[]> => {
   return new Promise((resolve, reject) => {
-    const data: any[] = [];
+    const data: Object[] = [];
     let columns: string[] = [];
 
     fs.createReadStream(filePath, { encoding: 'utf-8' }) // Set the encoding to utf-8

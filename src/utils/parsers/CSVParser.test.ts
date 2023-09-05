@@ -1,4 +1,4 @@
-import {parseCSV} from "./CSV";
+import {parseCSV} from "./CSVParser";
 
 const parsedOrders =  [
   {

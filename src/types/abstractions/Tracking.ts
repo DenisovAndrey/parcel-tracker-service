@@ -1,7 +1,7 @@
-import {DeliverySuppliers} from "../DeliverySuppliers";
-import {Address} from "../Address";
-import {Serializable} from "../Serializable";
-import {Article} from "../Article";
+import {DeliverySuppliers} from "../entities/DeliverySuppliers";
+import {Address} from "../entities/Address";
+import {Serializable} from "../entities/Serializable";
+import {Article} from "../entities/Article";
 
 export abstract class Tracking implements Serializable{
   abstract orderNo: string;

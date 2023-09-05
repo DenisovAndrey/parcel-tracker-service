@@ -1,4 +1,4 @@
-import {Serializable} from "../Serializable";
+import {Serializable} from "../entities/Serializable";
 
 export abstract class Checkpoint implements Serializable{
   abstract trackingNumber: string;

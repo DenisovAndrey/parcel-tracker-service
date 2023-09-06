@@ -7,6 +7,6 @@ export abstract class Checkpoint implements Serializable{
   status: string = '';
   statusText: string = '';
   statusDetails: string = '';
-  abstract parsRawData(data: Object): void
+  abstract parseRawData(data: Object): void
 }
 

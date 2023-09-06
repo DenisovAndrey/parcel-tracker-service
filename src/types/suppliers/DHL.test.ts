@@ -49,16 +49,16 @@ const parsedCheckpoint = {
 }
 
 describe('DHLOrder', () => {
-  describe('parsRawData', () => {
+  describe('parseRawData', () => {
     it('parses raw order correctly', async () => {
       const dhlOrder = new DHLOrder();
-      dhlOrder.parsRawData(rawOrderData)
+      dhlOrder.parseRawData(rawOrderData)
       expect(dhlOrder).toEqual(parsedOrder)
     })
     it('set default values if fields are missed', async () => {
       const expectedParsedOrder = {...parsedOrder, article: {...parsedOrder.article, productName: ''}, address: {...parsedOrder.address, street: ''}}
       const dhlOrder = new DHLOrder();
-      dhlOrder.parsRawData({...rawOrderData, street: undefined, product_name: undefined } as any)
+      dhlOrder.parseRawData({...rawOrderData, street: undefined, product_name: undefined } as any)
       expect(dhlOrder).toEqual(expectedParsedOrder)
     })
   })
@@ -66,16 +66,16 @@ describe('DHLOrder', () => {
 
 
 describe('DHLCheckpoint', () => {
-  describe('parsRawData', () => {
+  describe('parseRawData', () => {
     it('parses raw order correctly', async () => {
       const dhlCheckpoint = new DHLCheckpoint();
-      dhlCheckpoint.parsRawData(rawCheckpointData)
+      dhlCheckpoint.parseRawData(rawCheckpointData)
       expect(dhlCheckpoint).toEqual(parsedCheckpoint)
     })
     it('set default values if fields are missed', async () => {
       const expectedCheckpoint = {...parsedCheckpoint, location: '', statusDetails: ''}
       const dhlCheckpoint = new DHLCheckpoint();
-      dhlCheckpoint.parsRawData({...rawCheckpointData, location: undefined, status_details: undefined } as any)
+      dhlCheckpoint.parseRawData({...rawCheckpointData, location: undefined, status_details: undefined } as any)
       expect(dhlCheckpoint).toEqual(expectedCheckpoint)
     })
   })

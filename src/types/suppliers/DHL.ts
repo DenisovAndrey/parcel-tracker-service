@@ -28,7 +28,7 @@ export interface DHLCheckpointRawDataResponse {
 
 export class DHLOrder extends Order {
   courier: DeliverySuppliers = DeliverySuppliers.DHL
-  parsRawData(rawData: DHLOrderRawDataResponse): void {
+  parseRawData(rawData: DHLOrderRawDataResponse): void {
     this.orderNo = rawData.orderNo || '';
     this.trackingNumber = rawData.tracking_number || '';
     this.destinationCountryIso3 = rawData.destination_country_iso3 || '';
@@ -50,7 +50,7 @@ export class DHLOrder extends Order {
 }
 
 export class DHLCheckpoint extends Checkpoint {
-  parsRawData(rawData: DHLCheckpointRawDataResponse): void {
+  parseRawData(rawData: DHLCheckpointRawDataResponse): void {
     this.trackingNumber = rawData.tracking_number || '';
     this.location = rawData.location || '';
     this.timestamp = new Date(rawData.timestamp);

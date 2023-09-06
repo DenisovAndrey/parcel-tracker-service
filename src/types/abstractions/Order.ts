@@ -22,7 +22,7 @@ export abstract class Order implements Serializable{
   };
 
   abstract courier: DeliverySuppliers;
-  abstract parsRawData(data: Object): void
+  abstract parseRawData(data: Object): void
 
 
 }

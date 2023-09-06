@@ -1,3 +1,3 @@
 export interface Serializable {
-  parsRawData(data: Object): void
+  parseRawData(data: Object): void
 }

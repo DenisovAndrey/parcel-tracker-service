@@ -28,7 +28,7 @@ export class DHLSupplierService extends DeliverySupplierService {
       const checkpoint: Checkpoint = new DHLCheckpoint();
       checkpoint.parseRawData(rawOrderObject);
       return checkpoint;
-    }).filter(({trackingNumber: checkpointTrackingNumber}) => trackingNumber = checkpointTrackingNumber)
+    }).filter(({trackingNumber: checkpointTrackingNumber}) => trackingNumber === checkpointTrackingNumber)
     // in a real application we would pass tracking number to Supplier and get related checkpoints by tracking number
 
     return checkpoints;

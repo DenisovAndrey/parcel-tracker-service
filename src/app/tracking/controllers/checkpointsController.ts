@@ -1,6 +1,5 @@
 import { Router } from 'express'
 import {CheckpointsPaths, OrdersPaths} from "./paths";
-import {getOrders} from "../actions/ordersAction";
 import {getCheckpoints} from "../actions/checkpointsAction";
 
 const router = Router()

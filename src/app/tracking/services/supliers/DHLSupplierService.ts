@@ -13,23 +13,23 @@ const dhlTrackingsInteractMock = (email: string) => {
   return 'data/trackings.csv';
 }
 
-const dhlCheckpointsInteractMock = (email: string) => {
+const dhlCheckpointsInteractMock = () => {
   // assume we interacted with DHL provider and got file with checkpoints as a response
   return 'data/checkpoints.csv';
 }
 
 
 export class DHLSupplierService extends DeliverySupplierService {
-  static async getCheckpoints(email: string): Promise<Checkpoint[]> {
-    // TODO: check if we need pass an order ID instead
-    const filePath = dhlCheckpointsInteractMock(email)
+  static async getCheckpoints(trackingNumber: string): Promise<Checkpoint[]> {
+    const filePath = dhlCheckpointsInteractMock()
 
     const rawResponseData = await parseCSV<DHLCheckpointRawDataResponse>(filePath)
     const checkpoints = rawResponseData.map((rawOrderObject) => {
       const checkpoint: Checkpoint = new DHLCheckpoint();
       checkpoint.parseRawData(rawOrderObject);
       return checkpoint;
-    })
+    }).filter(({trackingNumber: checkpointTrackingNumber}) => trackingNumber = checkpointTrackingNumber)
+    // in a real application we would pass tracking number to Supplier and get related checkpoints by tracking number
 
     return checkpoints;
   }

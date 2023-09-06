@@ -5,9 +5,9 @@ jest.mock('../../../../utils/parsers/CSVParser', () => ({
 }));
 jest.mock('../../../../types/suppliers/DHL', () => ({
   DHLCheckpoint: class {
-    value: string = '';
+    trackingNumber: string = '';
     parseRawData(v: { text: string }) {
-      this.value = v.text;
+      this.trackingNumber = v.text;
     }
   },
   DHLOrder: class {
@@ -25,13 +25,13 @@ describe('DHLSupplierService', () => {
 
   describe('getCheckpoints', () => {
     it('return parsed checkpoints as expected', async () => {
-      const checkpoints = await DHLSupplierService.getCheckpoints('test@test.tes');
+      const checkpoints = await DHLSupplierService.getCheckpoints('1');
       expect(checkpoints).toEqual([
         {
-          value: 'parsedRaw',
+          trackingNumber: 'parsedRaw',
         },
         {
-          value: 'parsedRaw',
+          trackingNumber: 'parsedRaw',
         },
       ]);
     });

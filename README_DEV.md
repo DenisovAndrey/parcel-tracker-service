@@ -30,6 +30,12 @@ All the api documentation (Swagger) is available by `/api-docs` url.
 - For all the emails the service always returns the same orders. In real world app the service would send client data to a supplier, so supplier would return data for a specific user
 - We pass a user email to orders endpoint. In a real app the service would know the client data from token/session info.
 
+## Database
+### MongoDB
+Considering that suppliers data is not structured and not strictly formatted MongoDB is a good option.
+MongoDB is a document-oriented NoSQL database that works with unstructured documents. 
+It has high scalability and read performance. 
+
 ## How to run
 
 1. Clone the repository: `git clone https://github.com/DenisovAndrey/parcel-tracker-service`

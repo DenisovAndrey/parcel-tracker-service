@@ -1,9 +1,9 @@
 import fs from 'fs';
 import csvParser from 'csv-parser';
 
-export const parseCSV = (filePath: string): Promise<Object[]> => {
+export const parseCSV = <RawDataType>(filePath: string): Promise<RawDataType[]> => {
   return new Promise((resolve, reject) => {
-    const data: Object[] = [];
+    const data: RawDataType[] = [];
     let columns: string[] = [];
 
     fs.createReadStream(filePath, { encoding: 'utf-8' }) // Set the encoding to utf-8
@@ -19,7 +19,7 @@ export const parseCSV = (filePath: string): Promise<Object[]> => {
           rowData[column] = row[column];
         });
 
-        data.push(rowData);
+        data.push(rowData as RawDataType);
       })
       .on('end', () => {
         resolve(data);

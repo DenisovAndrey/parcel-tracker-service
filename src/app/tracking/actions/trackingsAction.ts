@@ -1,8 +1,9 @@
-import {Tracking} from "../../../types/abstractions/Tracking";
+import {Order} from "../../../types/abstractions/Order";
 import { type Request } from '../../../types/Request'
 import { type Response } from '../../../types/Response'
+import {TrackingService} from "../services/TrackingService";
 
-export const getTrackings = (req: Request<{ userEmail: string }>, res: Response<{ trackings: Tracking[] }>): void => {
+export const getTrackings = (req: Request<{ userEmail: string }>, res: Response<{ trackings: Order[] }>): void => {
   const { userEmail } = req.query
 
   if (userEmail === undefined) {
@@ -10,6 +11,6 @@ export const getTrackings = (req: Request<{ userEmail: string }>, res: Response<
     return
   }
 
-  const trackings: Tracking[] = []
-  res.json({ trackings })
+  const orders: Order[] = TrackingService.getTrackingsByEmail(userEmail)
+  res.json({ orders })
 }

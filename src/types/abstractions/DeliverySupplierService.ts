@@ -1,7 +1,7 @@
 import {Checkpoint} from "./Checkpoint";
-import {Tracking} from "./Tracking";
+import {Order} from "./Order";
 
 export abstract class DeliverySupplierService {
-  abstract getCheckpoints(): Checkpoint
-  abstract getTrackings(): Tracking
+  static getCheckpoints(v: string): Promise<Checkpoint[]> {throw new Error("not implemented!");}
+  static getOrders(v: string): Promise<Order[]> {throw new Error("not implemented!");}
 };

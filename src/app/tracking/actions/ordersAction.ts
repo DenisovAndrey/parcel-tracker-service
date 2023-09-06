@@ -1,9 +1,9 @@
 import {Order} from "../../../types/abstractions/Order";
 import { type Request } from '../../../types/Request'
 import { type Response } from '../../../types/Response'
-import {TrackingService} from "../services/TrackingService";
+import {OrdersService} from "../services/OrdersService";
 
-export const getTrackings = (req: Request<{ userEmail: string }>, res: Response<{ trackings: Order[] }>): void => {
+export const getOrders = async (req: Request<{ userEmail: string }>, res: Response<{ orders: Order[] }>): Promise<void> => {
   const { userEmail } = req.query
 
   if (userEmail === undefined) {
@@ -11,6 +11,6 @@ export const getTrackings = (req: Request<{ userEmail: string }>, res: Response<
     return
   }
 
-  const orders: Order[] = TrackingService.getTrackingsByEmail(userEmail)
+  const orders: Order[] = await OrdersService.getOrdersByEmail(userEmail)
   res.json({ orders })
 }

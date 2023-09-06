@@ -1,3 +1,4 @@
-export enum TrackingPaths {
-  ROOT = '/trackings',
+export enum OrdersPaths {
+  ROOT = '/',
+  ORDERS = '/orders',
 }

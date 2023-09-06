@@ -1,0 +1,99 @@
+openapi: 3.0.0
+info:
+  title: Parcel tracker
+  version: 1.0.0
+  description: API documentation for Parcel tracker
+paths:
+  /orders:
+    get:
+      summary: Order
+      parameters:
+        - name: userEmail
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResponse'
+  /checkpoints/{trackingNumber}:
+    get:
+      summary: Checkpoints
+      parameters:
+        - name: trackingNumber
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CheckpointsResponse'
+components:
+  schemas:
+    OrderResponse:
+      type: object
+      properties:
+        orders:
+          type: array
+          items:
+            type: object
+            properties:
+              orderNo:
+                type: string
+              trackingNumber:
+                type: string
+              destinationCountryIso3:
+                type: string
+              email:
+                type: string
+              article:
+                type: object
+                properties:
+                  articleNo:
+                    type: string
+                  articleImageUrl:
+                    type: string
+                  quantity:
+                    type: integer
+                  productName:
+                    type: string
+              address:
+                type: object
+                properties:
+                  street:
+                    type: string
+                  zip_code:
+                    type: string
+                  city:
+                    type: string
+              courier:
+                type: string
+    CheckpointsResponse:
+      type: object
+      properties:
+        checkpoints:
+          type: array
+          items:
+            type: object
+            properties:
+              trackingNumber:
+                type: string
+              location:
+                type: string
+              timestamp:
+                type: string
+                format: date-time
+              status:
+                type: string
+              statusText:
+                type: string
+              statusDetails:
+                type: string

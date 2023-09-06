@@ -12,3 +12,12 @@ export interface DHLOrderRawDataResponse {
   quantity: string;
   product_name: string;
 }
+
+export interface DHLCheckpointRawDataResponse {
+  tracking_number: string;
+  location: string;
+  timestamp: string;
+  status: string;
+  status_text: string;
+  status_details: string;
+}
